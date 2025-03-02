@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "moment": "^2.30.1",
+    "mongoose": "^8.10.1",
+    "react-input-emoji": "^5.9.0",
+    "socket.io": "^4.8.1",
+    "validator": "^13.12.0",
+    "vite": "^6.1.0"
+  }
+}
