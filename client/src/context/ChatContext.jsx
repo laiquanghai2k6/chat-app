@@ -93,7 +93,7 @@ const ChatContextProvider = ({children,user}) => {
 
             getUser()
         }
-    },[user])
+    },[userChats])
 
     useEffect(()=>{
         const fetchData = async ()=>{
@@ -108,7 +108,7 @@ const ChatContextProvider = ({children,user}) => {
             }
         }
         fetchData()
-    },[user])
+    },[user,userChats])
     useEffect(()=>{
         const getMessage = async ()=>{
                 
@@ -146,7 +146,7 @@ const ChatContextProvider = ({children,user}) => {
     },[])
 
     const createChat = useCallback((firstId,secondId)=>{
-        const create = async ()=>{
+        const create = async ()=>{//if chat exist dont create
             const response = await postRequest(`${chatUrl}/createChat`,JSON.stringify({
                 firstId,
                 secondId
