@@ -103,7 +103,7 @@ const ChatContextProvider = ({children,user}) => {
 
             getUser()
         }
-    },[userChats])
+    },[userChats,user])
 
     useEffect(()=>{
         
