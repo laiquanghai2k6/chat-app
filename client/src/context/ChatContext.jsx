@@ -122,7 +122,7 @@ const ChatContextProvider = ({children,user}) => {
             }
         }
         fetchData()
-    },[user])
+    },[user,newMessage])
     useEffect(()=>{
         const getMessage = async ()=>{
                 
