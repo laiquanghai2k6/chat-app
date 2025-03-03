@@ -1,5 +1,11 @@
 const {Server} = require('socket.io')
-const io = new Server({cors:'https://chat-app-zeta-pearl-83.vercel.app'})
+const io = new Server({ cors: {
+    origin: "https://chat-app-zeta-pearl-83.vercel.app", // Link frontend
+    methods: ["GET", "POST"]
+  }
+
+    
+})
 
 let onlineUser = []
 
