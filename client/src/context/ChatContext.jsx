@@ -17,8 +17,8 @@ const ChatContextProvider = ({children,user}) => {
     useEffect(()=>{
         if(user){
             console.log('in this')
-            const newSocket =  io("https://chat-app-zeta-pearl-83.vercel.app/api/socket", {  
-                transports: ["polling"], //  Chỉ dùng polling, tránh WebSocket lỗi trên Vercel
+            const newSocket =  io("https://chat-app-40e3.onrender.com", {  
+                transports: ["websocket", "polling"], 
                 withCredentials: true
               });
        
