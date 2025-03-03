@@ -8,6 +8,8 @@ const PotentialChat = () => {
     const {user} = useContext(AuthContext)
     
     const {pChat,createChat,onlineUser} = useContext(ChatContext)
+    console.log('user from potential:',user)
+    console.log(user?._id)
    
     return (  
         <>

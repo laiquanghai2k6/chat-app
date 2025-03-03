@@ -21,7 +21,7 @@ const registerUser = async (req,res)=>{
         user.password = await bcrypt.hash(user.password,salt)
         await user.save()
         const token = createToken(user._id)
-        res.status(200).json({id:user._id,name,email,token})
+        res.status(200).json({_id:user._id,name,email,token})
     }catch(e){
         console.log(e.message)
         res.status(400).json({error:e.message})
