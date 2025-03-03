@@ -1,6 +1,6 @@
-export const baseUrl = 'http://127.0.0.1:5000/api/users'
-export const chatUrl = 'http://127.0.0.1:5000/api/chat'
-export const messageUrl = 'http://127.0.0.1:5000/api/message'
+export const baseUrl = 'https://chat-app-backend-af5w.onrender.com/api/users'
+export const chatUrl = 'https://chat-app-backend-af5w.onrender.com/api/chat'
+export const messageUrl = 'https://chat-app-backend-af5w.onrender.com/api/message'
 export const postRequest = async(url,body)=>{
     const response = await fetch(url,{
         method:'POST',
