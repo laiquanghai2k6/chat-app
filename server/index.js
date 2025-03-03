@@ -8,7 +8,11 @@ const chatRoute = require('./Routes/chatRoute');
 const messageRoute = require('./Routes/messageRoute');
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: "https://chat-app-zeta-pearl-83.vercel.app", 
+    methods: ["GET", "POST"],
+    credentials: true,
+  }))
 app.use("/api/users",userRoute)
 app.use("/api/chat",chatRoute)
 app.use("/api/message",messageRoute)
