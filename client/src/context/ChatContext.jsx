@@ -16,7 +16,7 @@ const ChatContextProvider = ({children,user}) => {
     const [notification,setNotification] = useState([])
     useEffect(()=>{
     
-        const newSocket = io('http://localhost:3000')
+        const newSocket = io('https://chat-app-backend-af5w.onrender.com')
         setSocket(newSocket)
         return ()=>{
             newSocket.disconnect()
