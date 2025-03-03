@@ -1,5 +1,5 @@
 const {Server} = require('socket.io')
-const io = new Server({cors:'https://chat-app-backend-af5w.onrender.com'})
+const io = new Server({cors:'https://chat-app-40e3.onrender.com'})
 
 let onlineUser = []
 

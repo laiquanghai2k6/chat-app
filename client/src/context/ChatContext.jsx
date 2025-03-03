@@ -5,8 +5,8 @@ import {io} from 'socket.io-client'
 export const ChatContext= createContext()
 
 const ChatContextProvider = ({children,user}) => {
+    
     const [userChats,setUserChats] = useState(null)
-    const [isSelectChat,setIsSelectChat] = useState(0)
     const [pChat,setPChat] = useState(null)
     const [currentChat,setCurrentChat] = useState(null)
     const [message,setMessage] = useState([])
@@ -15,12 +15,17 @@ const ChatContextProvider = ({children,user}) => {
     const [onlineUser,setOnlineUser] = useState(null)
     const [notification,setNotification] = useState([])
     useEffect(()=>{
-    
-        const newSocket = io('https://chat-app-backend-af5w.onrender.com')
-        setSocket(newSocket)
-        return ()=>{
-            newSocket.disconnect()
+        if(user){
+            console.log('in this')
+            const newSocket = io('https://chat-app-40e3.onrender.com')
+       
+            setSocket(newSocket)
+            return ()=>{
+                newSocket.disconnect()
+            }
         }
+       
+       
     },[user])
     useEffect(()=>{
         
@@ -74,7 +79,10 @@ const ChatContextProvider = ({children,user}) => {
     },[socket,currentChat])
 
     useEffect(()=>{
+        
+       
         const getUser = async ()=>{
+            
             const getAllUser = await getRequest(baseUrl+'/findAll')
             
             const potentialChat = getAllUser?.filter((u)=>{
@@ -88,6 +96,8 @@ const ChatContextProvider = ({children,user}) => {
             })
             
             setPChat(potentialChat)
+            
+
         }
         if(user){
 
@@ -96,6 +106,7 @@ const ChatContextProvider = ({children,user}) => {
     },[userChats])
 
     useEffect(()=>{
+        
         const fetchData = async ()=>{
             if(user?._id){
                 const response = await getRequest(chatUrl+"/getChat?userId="+user._id)
@@ -108,7 +119,7 @@ const ChatContextProvider = ({children,user}) => {
             }
         }
         fetchData()
-    },[user,userChats])
+    },[user])
     useEffect(()=>{
         const getMessage = async ()=>{
                 
