@@ -164,13 +164,14 @@ const ChatContextProvider = ({children,user}) => {
    
 
     const createChat = useCallback((firstId,secondId)=>{
+        console.log()
         const create = async ()=>{
             const response = await postRequest(`${chatUrl}/createChat`,JSON.stringify({
                 firstId,
                 secondId
             }))
             if(response.error){
-                res.status(400).json('error at create chat')
+                console.log('response.error',response.error)
             }
             setUserChats((prev)=>[...prev,response])
         }

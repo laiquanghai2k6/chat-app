@@ -5,6 +5,7 @@ const userModel = require('../Models/userModel')
 const createChat = async (req,res)=>{
     try{
         const {firstId,secondId} = req.body
+        console.log('testing:',firstId,secondId)
         
         const existUser1 = await userModel.findOne({
             _id:firstId
@@ -22,6 +23,7 @@ const createChat = async (req,res)=>{
         const newChat = new chatModel({
             members:[firstId,secondId]
         })
+        console.log('newChat:',newChat)
 
         const response = await newChat.save()
         res.status(200).json(response)
