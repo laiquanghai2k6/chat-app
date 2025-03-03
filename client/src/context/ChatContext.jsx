@@ -17,7 +17,7 @@ const ChatContextProvider = ({children,user}) => {
     useEffect(()=>{
         if(user){
             console.log('in this')
-            const newSocket = io('https://chat-app-40e3.onrender.com')
+            const newSocket = io('https://chat-app-backend-af5w.onrender.com')
        
             setSocket(newSocket)
             return ()=>{
