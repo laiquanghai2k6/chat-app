@@ -164,7 +164,7 @@ const ChatContextProvider = ({children,user}) => {
    
 
     const createChat = useCallback((firstId,secondId)=>{
-        console.log()
+        console.log('id:',firstId,secondId)
         const create = async ()=>{
             const response = await postRequest(`${chatUrl}/createChat`,JSON.stringify({
                 firstId,
