@@ -9,12 +9,13 @@ const ChatBox = () => {
     const { user } = useContext(AuthContext)
     const { currentChat, message,sendMessage } = useContext(ChatContext)
     const { recepientUser } = FetchRecepientUser(currentChat, user)
+    console.log('message',message)
     const [textMessage, setTextMessage] = useState("")
     const messagesRef = useRef(null);
     
     useEffect(() => {
     const container = messagesRef.current;
-    console.log(container)
+    
     if (container) {
         container.scrollTop = container.scrollHeight;
     }

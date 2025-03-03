@@ -6,6 +6,7 @@ import { ChatContext } from "../context/ChatContext";
 
 const NavBar = () => {
     const {user,logOutUser} = useContext(AuthContext)
+    const {setMessage,updateCurrentChat} = useContext(ChatContext)
     return (
         <Navbar className="mb-4" bg="dark" style={{height:"3.75rem"}}>
 
@@ -26,6 +27,8 @@ const NavBar = () => {
                             ) : (
                                 <Link to='/register' className="link-light text-decoration-none" onClick={()=>{
                                     logOutUser()
+                                    setMessage([])
+                                    updateCurrentChat(null)
                                     // socket.disconnect()
                                     }}>
                                 logout

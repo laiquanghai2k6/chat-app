@@ -16,7 +16,7 @@ const ChatContextProvider = ({children,user}) => {
     const [notification,setNotification] = useState([])
     useEffect(()=>{
         if(user){
-            console.log('in this')
+            
             const newSocket =  io("https://chat-app-40e3.onrender.com", {  
                 transports: ["websocket", "polling"], 
                 withCredentials: true
@@ -24,6 +24,7 @@ const ChatContextProvider = ({children,user}) => {
        
             setSocket(newSocket)
             return ()=>{
+               
                 newSocket.disconnect()
             }
         }
@@ -122,7 +123,7 @@ const ChatContextProvider = ({children,user}) => {
             }
         }
         fetchData()
-    },[user,newMessage])
+    },[user,message,notification])
     useEffect(()=>{
         const getMessage = async ()=>{
                 
@@ -139,7 +140,7 @@ const ChatContextProvider = ({children,user}) => {
         getMessage()
                     
         }
-    },[currentChat])
+    },[currentChat,user])
     const sendMessage = useCallback(async (text,sender,chatId,setTextMessage)=>{
         if(!text) return console.log('type sth')
         const response = await postRequest(`${messageUrl}/createMessage`,JSON.stringify({
@@ -150,14 +151,17 @@ const ChatContextProvider = ({children,user}) => {
             if(response.error){
                 return console.log(response.error)
             }
-            console.log('zzz:',response)
+            
             setNewMessage(response)
             setTextMessage("")
             setMessage((prev)=>{
-                console.log('sendMessage:',prev)
-                return [...prev,response]})
+               
+                    return [...prev,response]
+                
+                })
             
     },[])
+   
 
     const createChat = useCallback((firstId,secondId)=>{
         const create = async ()=>{//if chat exist dont create
@@ -181,6 +185,7 @@ const ChatContextProvider = ({children,user}) => {
         createChat,
         updateCurrentChat,
         message,
+        setMessage,
         currentChat,sendMessage,
         onlineUser,
         socket
