@@ -35,9 +35,9 @@ const NavBar = () => {
                             
                         }
                        
-                        <Link to='/register' className="link-light text-decoration-none">
+                        {!user && <Link to='/register' className="link-light text-decoration-none">
                         Register
-                        </Link>
+                        </Link>}
                     </Stack>
                 </Nav>
             </Container>
