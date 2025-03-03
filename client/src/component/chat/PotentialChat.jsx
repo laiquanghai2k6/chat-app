@@ -16,7 +16,7 @@ const PotentialChat = () => {
             <div className="all-users">
                 {pChat &&
                 pChat.map((u,index)=>(
-                    <div className="single-user" key={index} onClick={()=>createChat(user?._id,u?._id)}>
+                    <div className="single-user" key={index} onClick={()=>createChat(user?.id,u?._id)}>
                         {u?.name}
                         <span className={onlineUser?.some((user)=>user.userId ==u?._id) ? "user-online" : ""} ></span>
                     </div>
